@@ -1,0 +1,66 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam backgroundColor #FFFFFF
+
+actor "Участник клуба" as Member
+actor "Администратор" as Admin
+actor "Руководитель клуба" as Leader
+
+package "ИС «Учёт книг и авторов» (LibTrack)" {
+    ' Участник клуба
+    usecase "Регистрация в системе" as RegMember
+    usecase "Вход в систему" as LoginMember
+    usecase "Поиск книг (по автору/названию)" as SearchBooks
+    usecase "Бронирование книги" as BookBook
+    usecase "Просмотр своих взятых книг" as ViewMyBooks
+
+    ' Администратор
+    usecase "Вход в систему " as LoginAdmin
+    usecase "Регистрация нового участника" as RegNewMember
+    usecase "Учёт выдач и задолженностей" as ManageLoans
+    usecase "Регистрация выдачи" as RegIssue
+    usecase "Регистрация возврата" as RegReturn
+
+    usecase "Управление каталогом книг" as ManageCatalog
+    usecase "Добавление книги" as AddBook
+    usecase "Удаление книги" as DeleteBook
+
+    usecase "Управление справочником авторов" as ManageAuthors
+
+    ' Руководитель клуба
+    usecase "Вход в систему  " as LoginLeader
+    usecase "Аналитика по жанрам" as GenreAnalytics
+    usecase "Аналитика популярности авторов" as AuthorAnalytics
+}
+
+' 1. Участник клуба
+Member --> RegMember
+Member --> LoginMember
+
+LoginMember --> SearchBooks
+LoginMember --> BookBook
+LoginMember --> ViewMyBooks
+
+' 2. Администратор
+Admin --> LoginAdmin
+
+LoginAdmin --> RegNewMember
+LoginAdmin --> ManageLoans
+LoginAdmin --> ManageCatalog
+LoginAdmin --> ManageAuthors
+
+' Поддействия Администратора
+ManageLoans --> RegIssue
+ManageLoans --> RegReturn
+
+ManageCatalog --> AddBook
+ManageCatalog --> DeleteBook
+
+' 3. Руководитель клуба
+Leader --> LoginLeader
+
+LoginLeader --> GenreAnalytics
+LoginLeader --> AuthorAnalytics
+
+@enduml
