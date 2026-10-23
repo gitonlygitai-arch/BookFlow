@@ -1,0 +1,40 @@
+@startuml
+left to right direction
+skinparam linetype ortho
+
+entity "authors" {
+  * id : INT <<PK>>
+  --
+  name : VARCHAR
+}
+
+entity "books" {
+  * id : INT <<PK>>
+  --
+  title : VARCHAR
+  year : INT
+  author_id : INT <<FK>>
+  quantity : INT
+}
+
+entity "members" {
+  * id : `INT` <<PK>>
+  --
+  full_name : VARCHAR
+  phone : VARCHAR
+}
+
+entity "loans" {
+  * id : INT <<PK>>
+  --
+  book_id : INT <<FK>>
+  member_id : INT <<FK>>
+  borrow_date : DATE
+  return_date : DATE
+}
+
+authors ||--o{ books : "написал"
+books ||--o{ loans : "выдается"
+members ||--o{ loans : "берет"
+
+@enduml
