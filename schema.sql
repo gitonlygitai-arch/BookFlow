@@ -36,7 +36,7 @@ CREATE TABLE loans (
     FOREIGN KEY (book_id) REFERENCES books(book_id)
 );
 
--- Добавление тестовых записей (INSERT INTO)[span_10](start_span)[span_10](end_span)[span_11](start_span)[span_11](end_span)
+-- Добавление тестовых записей 
 INSERT INTO authors (name) VALUES 
     ('Л.Н. Толстой'),
     ('Ф.М. Достоевский');
