@@ -7,7 +7,7 @@ actor "Участник клуба" as Member
 actor "Администратор" as Admin
 actor "Руководитель клуба" as Leader
 
-package "ИС «Учёт книг и авторов» (LibTrack)" {
+package "ИС «Учёт книг и авторов»" {
     ' Участник клуба
     usecase "Регистрация в системе" as RegMember
     usecase "Вход в систему" as LoginMember
