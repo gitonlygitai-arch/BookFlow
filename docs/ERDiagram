@@ -1,40 +1,121 @@
 @startuml
-left to right direction
+hide circle
+hide stereotype
 skinparam linetype ortho
+skinparam backgroundColor #FFFFFF
+skinparam ranksep 60
+skinparam nodesep 60
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontSize 13
+skinparam ArrowColor #555555
+skinparam ArrowThickness 1.5
 
-entity "authors" {
-  * id : INT <<PK>>
-  --
-  name : VARCHAR
+skinparam entity {
+  BorderThickness 2
+  BackgroundColor<<users>> #DCEBFF
+  BorderColor<<users>> #2F6FB5
+  BackgroundColor<<ops>> #FFE3B8
+  BorderColor<<ops>> #D17A00
+  BackgroundColor<<books>> #D3F0D3
+  BorderColor<<books>> #2E8B3E
+  BackgroundColor<<dict>> #E6D9FA
+  BorderColor<<dict>> #7A4FC4
 }
 
-entity "books" {
-  * id : INT <<PK>>
+entity UserRole <<users>> {
+  * userRoleID : int <<PK>>
   --
-  title : VARCHAR
-  year : INT
-  author_id : INT <<FK>>
-  quantity : INT
+  name : str
 }
 
-entity "members" {
-  * id : `INT` <<PK>>
+entity User <<users>> {
+  * userID : int <<PK>>
   --
-  full_name : VARCHAR
-  phone : VARCHAR
+  name : str
+  surname : str
+  patronymic : str
+  password_hash : str
+  userRole : int <<FK>>
 }
 
-entity "loans" {
-  * id : INT <<PK>>
+entity Reservation <<ops>> {
+  * reservationID : int <<PK>>
   --
-  book_id : INT <<FK>>
-  member_id : INT <<FK>>
-  borrow_date : DATE
-  return_date : DATE
+  readerID : int <<FK>>
+  bookID : int <<FK>>
+  reservedAt : datetime
+  status : int <<FK>>
 }
 
-authors ||--o{ books : "написал"
-books ||--o{ loans : "выдается"
-members ||--o{ loans : "берет"
+entity ReservationStatus <<ops>> {
+  * reservationStatusID : int <<PK>>
+  --
+  name : str
+}
 
+entity Loan <<ops>> {
+  * loanID : int <<PK>>
+  --
+  reservationID : int <<FK>>
+  bookID : int <<FK>>
+  readerID : int <<FK>>
+  adminID : int <<FK>>
+  issuedAt : datetime
+  dueDate : datetime
+  returnedAt : datetime
+}
+
+entity Book <<books>> {
+  * bookID : int <<PK>>
+  --
+  name : str
+  isbn : str
+}
+
+entity AuthorBook <<books>> {
+  * authorBookID : int <<PK>>
+  --
+  authorID : int <<FK>>
+  bookID : int <<FK>>
+}
+
+entity BookGenre <<books>> {
+  * bookGenreID : int <<PK>>
+  --
+  bookID : int <<FK>>
+  genreID : int <<FK>>
+}
+
+entity Author <<dict>> {
+  * authorID : int <<PK>>
+  --
+  name : str
+  surname : str
+  patronymic : str
+}
+
+entity Genre <<dict>> {
+  * genreID : int <<PK>>
+  --
+  name : str
+}
+
+' Ряд 1
+UserRole ||-right-o{ User
+User ||-right-o{ Reservation : reserves
+Reservation }o-right-|| ReservationStatus
+
+' Ряд 2
+User ||-down-o{ Loan : borrows
+Reservation ||-down-o| Loan : turns into
+Loan }o-right-|| Book
+Book ||-right-o{ AuthorBook
+
+' Ряд 3
+Book ||-down-o{ BookGenre
+Genre ||-right-o{ BookGenre
+AuthorBook }o-down-|| Author
+
+Reservation }o-down-|| Book
 @enduml
