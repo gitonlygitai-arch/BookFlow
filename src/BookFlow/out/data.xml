@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='utf-8'?>
+<library>
+    <book>
+        <id>1</id>
+        <title>Война и мир</title>
+        <isbn>978-5-17-090123-4</isbn>
+        <authors>
+            <author>
+                <author_id>1</author_id>
+                <name>Лев</name>
+                <surname>Толстой</surname>
+                <patronymic>Николаевич</patronymic>
+            </author>
+        </authors>
+    </book>
+    <book>
+        <id>2</id>
+        <title>Евгений Онегин</title>
+        <isbn>978-5-699-12345-6</isbn>
+        <authors>
+            <author>
+                <author_id>2</author_id>
+                <name>Александр</name>
+                <surname>Пушкин</surname>
+                <patronymic>Сергеевич</patronymic>
+            </author>
+        </authors>
+    </book>
+    <book>
+        <id>3</id>
+        <title>Преступление и наказание</title>
+        <isbn>978-5-04-100234-5</isbn>
+        <authors>
+            <author>
+                <author_id>3</author_id>
+                <name>Фёдор</name>
+                <surname>Достоевский</surname>
+                <patronymic>Михайлович</patronymic>
+            </author>
+        </authors>
+    </book>
+    <book>
+        <id>4</id>
+        <title>Вишневый сад</title>
+        <isbn>978-5-699-76543-2</isbn>
+        <authors>
+            <author>
+                <author_id>4</author_id>
+                <name>Антон</name>
+                <surname>Чехов</surname>
+                <patronymic>Павлович</patronymic>
+            </author>
+        </authors>
+    </book>
+    <book>
+        <id>5</id>
+        <title>Герой нашего времени</title>
+        <isbn>978-5-17-112233-4</isbn>
+        <authors>
+            <author>
+                <author_id>5</author_id>
+                <name>Михаил</name>
+                <surname>Лермонтов</surname>
+                <patronymic>Юрьевич</patronymic>
+            </author>
+        </authors>
+    </book>
+    <book>
+        <id>6</id>
+        <title>Мертвые души</title>
+        <isbn>978-5-04-998877-6</isbn>
+        <authors>
+            <author>
+                <author_id>6</author_id>
+                <name>Николай</name>
+                <surname>Гоголь</surname>
+                <patronymic>Васильевич</patronymic>
+            </author>
+        </authors>
+    </book>
+    <book>
+        <id>7</id>
+        <title>Отцы и дети</title>
+        <isbn>978-5-699-445566-7</isbn>
+        <authors>
+            <author>
+                <author_id>7</author_id>
+                <name>Иван</name>
+                <surname>Тургенев</surname>
+                <patronymic>Сергеевич</patronymic>
+            </author>
+        </authors>
+    </book>
+    <book>
+        <id>8</id>
+        <title>Черный человек</title>
+        <isbn>978-5-17-334455-8</isbn>
+        <authors>
+            <author>
+                <author_id>8</author_id>
+                <name>Сергей</name>
+                <surname>Есенин</surname>
+                <patronymic>Александрович</patronymic>
+            </author>
+        </authors>
+    </book>
+</library>
